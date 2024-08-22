@@ -14,8 +14,7 @@ public class AlunoController {
     @Autowired
     private AlunoRepository alunoRepository;
 
-    // Métodos de CRUD serão implementados aqui
-
+    // direcionar para listagem de alunos
     @GetMapping
     public String listar(Model model){
         model.addAttribute("alunos", alunoRepository.findAll());

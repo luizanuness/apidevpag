@@ -1,9 +1,6 @@
 package br.senai.br.devpag.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,18 +11,19 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Aluno {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nome;
-    private Date dataNascimento;
-    private String cpf;
-    private String telefone;
-    private String email;
-    private String registroMatricula;
+//determina que A = Aluno no tipo de pessoa
+@DiscriminatorValue(value = "A")
+public class Aluno extends Pessoa{
 
+   private Long matricula;
 
+   public Long getMatricula(){
+       return matricula;
+   }
+
+   public void setMatricula(Long matricula){
+       this.matricula = matricula;
+   }
 }
 
