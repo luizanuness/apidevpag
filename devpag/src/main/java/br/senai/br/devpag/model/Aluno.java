@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,11 +20,11 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String dataNascimento;
-    private String genero;
+    private Date dataNascimento;
+    private String cpf;
     private String telefone;
     private String email;
-    private String registroAluno;
+    private String registroMatricula;
 
 
 }
