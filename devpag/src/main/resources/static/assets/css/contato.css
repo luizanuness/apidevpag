@@ -1,0 +1,38 @@
+.card-contato{
+    width: 600px;
+    height: 600px;
+    background-color: #57BABD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+   
+}
+.container-usuario{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    
+}
+.btn{
+    font-style: oblique;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 200px;
+}
+.navbar{
+    background-color: #146C94;
+}
+.whatsapp{
+    width: 50px;
+    height: 50px;
+}
+.telefone{
+    width: 50px;
+    height: 50px;
+}
+.email{
+    width: 50px;
+    height: 50px;
+}
