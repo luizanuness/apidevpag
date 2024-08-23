@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+:root{
+    --cor-primaria:#014473;
+    --cor-secundaria:#1F9396;
+    --cor-terciaria: #848282;
+    --cor-quartenaria: #FFFFFF;
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.logo{
+    height: 8rem;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+h1{
+    text-align: center;
+    margin-top: 3rem;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0rem 2rem 0rem;
+    width: 80vh;
+}
+.campo{
+    height: 2rem;
+}
+button{
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    border-radius: 25px;
+    font-size: large;
+    cursor: pointer;
+    border: none;
+    background-color: var(--cor-primaria);
+    color: var(--cor-quartenaria); 
+}
+.form-group {
+    text-align: right; 
+}
+p{
+    margin-top: 5rem;
+}
+a{
+    color: var(--cor-secundaria);
+}
+footer{
+    background-color: var(--cor-primaria);
+    color: var(--cor-quartenaria);
+    padding: 1rem;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
