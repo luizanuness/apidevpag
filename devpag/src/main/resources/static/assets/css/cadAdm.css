@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+:root{
+    --cor-primaria:#014473;
+    --cor-secundaria:#1F9396;
+    --cor-terciaria: #848282;
+    --cor-quartenaria: #FFFFFF;
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+header{
+    background-color: var(--cor-primaria);
+    display: flex;
+    align-items: center;
+}
+.logo{
+    height: 4rem;
+    margin: 2rem;
+}
+.navbar-nav{
+    list-style-type: none;
+    display: flex;
+}
+.nav-link{
+    color: var(--cor-quartenaria);
+    margin: 1rem;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.conteiner{
+    background-color: var(--cor-secundaria);
+    color: var(--cor-quartenaria);
+    padding: 1rem;
+}
+
+h2{
+    text-align: center;
+    margin-top: 2rem;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0rem 1rem 0rem;
+    width: 60vh;
+}
+.campo{
+    height: 2rem;
+}
+button{
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    border-radius: 25px;
+    font-size: large;
+    cursor: pointer;
+    border: none;
+    background-color: var(--cor-primaria);
+    color: var(--cor-quartenaria); 
+}
+.form-group {
+    text-align: right; 
+    display: flex;
+    justify-content: space-around;
+}
+footer{
+    background-color: var(--cor-primaria);
+    color: var(--cor-quartenaria);
+    padding: 1rem;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
