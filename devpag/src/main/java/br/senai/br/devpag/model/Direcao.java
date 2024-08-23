@@ -1,7 +1,6 @@
 package br.senai.br.devpag.model;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
 
@@ -9,4 +8,8 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue(value = "D")
 
 public class Direcao {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 }

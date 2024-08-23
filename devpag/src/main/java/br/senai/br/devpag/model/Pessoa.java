@@ -3,14 +3,14 @@ package br.senai.br.devpag.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 //tipos de pessoa
 
 @DiscriminatorColumn(
@@ -20,11 +20,7 @@ import java.util.Date;
 )
 public class Pessoa {
 
-    //id
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
-    private Long id;
+
 
     //cpf
     @NotEmpty(message = "CPF deve ser informado")
