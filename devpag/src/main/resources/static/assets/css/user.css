@@ -32,5 +32,14 @@
 .navbar{
     background-color: #146C94;
 }
+footer{
+       background-color: #19a7ce2d;
+           color:  #000000;;
+           padding: 1rem;
+           bottom: 0;
+           position: fixed;
+           width: 100%;
+           text-align: center;
+}
 
 
