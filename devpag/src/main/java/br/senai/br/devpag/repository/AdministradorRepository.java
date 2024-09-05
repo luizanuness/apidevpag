@@ -1,4 +1,4 @@
 package br.senai.br.devpag.repository;
 
-public interface DirecaoRepository {
+public interface AdministradorRepository {
 }
