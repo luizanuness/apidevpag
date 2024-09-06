@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 //determina que D = Direcao no tipo de pessoa
 @DiscriminatorValue(value = "D")
 
-public class Direcao {
+public class Administrador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

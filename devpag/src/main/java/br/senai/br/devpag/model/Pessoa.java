@@ -6,13 +6,13 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 //tipos de pessoa
-
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
         name = "tipoPessoa",
         length = 1,
@@ -20,7 +20,9 @@ import java.util.Date;
 )
 public class Pessoa {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     //cpf
     @NotEmpty(message = "CPF deve ser informado")
@@ -36,13 +38,14 @@ public class Pessoa {
     @Email(message = "E-mail inválido")
     private String email;
 
+    //email
+    @NotEmpty(message = "Telefone deve ser informado")
+    private String telefone;
+
     //senha
-    @NotEmpty(message = "Senha deve ser informada")
+    //@NotEmpty(message = "Senha deve ser informada")
     private String senha;
 
-    //data de nascimento
-    @NotEmpty(message = "Data de nascimento deve ser informada")
-    private Date dataNascimento;
 
 
 }

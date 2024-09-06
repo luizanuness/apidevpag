@@ -1,6 +1,10 @@
 package br.senai.br.devpag.controller;
 
-public class DirecaoController {
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/administrador")
+public class AdministradorController {
 
 }
 
