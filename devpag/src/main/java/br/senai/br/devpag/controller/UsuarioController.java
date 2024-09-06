@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UsuarioController {
 
     //direcionar para login/user.html
-    @GetMapping
+    @GetMapping ("/perfil")
     public String perfil(){
-        return "login/user";
+        return "user/user";
     }
 
     @GetMapping("/cadastro")
