@@ -1,75 +1,44 @@
-*{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-}
-:root{
-    --cor-primaria:#014473;
-    --cor-secundaria:#1F9396;
-    --cor-terciaria: #848282;
-    --cor-quartenaria: #FFFFFF;
-}
-body{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-header{
-    background-color: var(--cor-primaria);
-    display: flex;
-    align-items: center;
-}
-.logo{
-    height: 4rem;
-    margin: 2rem;
-}
-.navbar-nav{
-    list-style-type: none;
-    display: flex;
-}
-.nav-link{
-    color: var(--cor-quartenaria);
-    margin: 1rem;
-}
-main{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.conteiner{
-    background-color: var(--cor-secundaria);
-    color: var(--cor-quartenaria);
-    padding: 1rem;
+
+.navbar{
+    background-color: #146C94;
 }
 
-h2{
+.container-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    text-align: start;
+}
+.dropdown-toggle{
+    width: 500px;
     text-align: center;
-    margin-top: 2rem;
 }
-.input-group{
+.dropdown-menu{
+    width: 500px;
+}
+.btn{
+   align-items: end;
+}
+.card-aluno{
+    width: 500px;
+    height: 500px;
+    background-color: #1F9396;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
-    margin: 1rem 0rem 1rem 0rem;
-    width: 60vh;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
-.campo{
-    height: 2rem;
-}
-button{
-    padding: 0.5rem 2rem 0.5rem 2rem;
-    border-radius: 25px;
-    font-size: large;
-    cursor: pointer;
-    border: none;
-    background-color: var(--cor-primaria);
-    color: var(--cor-quartenaria); 
-}
-.form-group {
-    text-align: right; 
-    display: flex;
-    justify-content: space-around;
+
+.img-container img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 0; /* Remove o border-radius da imagem interna */
 }
 footer{
-    background-color: var(--cor-primaria);
-    color: var(--cor-quartenaria);
+    background-color:  #146C94;
+    color:  #ffffff;;
     padding: 1rem;
     bottom: 0;
     position: fixed;

@@ -10,12 +10,10 @@
     padding: 10px;
     text-align: start;
 }
-
-
 .card-aluno{
     width: 500px;
     height: 500px;
-    background-color: #146C94;
+    background-color: #1F9396;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -27,4 +25,13 @@
     max-width: 90%;
     max-height: 90%;
     border-radius: 0; /* Remove o border-radius da imagem interna */
+}
+footer{
+    background-color:  #146C94;
+    color:  #ffffff;;
+    padding: 1rem;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
 }

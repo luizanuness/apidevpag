@@ -54,11 +54,11 @@ a{
     color: var(--cor-secundaria);
 }
 footer{
-    background-color: var(--cor-primaria);
-    color: var(--cor-quartenaria);
-    padding: 1rem;
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-    text-align: center;
+      background-color:  #146C94;
+          color:  #ffffff;;
+          padding: 1rem;
+          bottom: 0;
+          position: fixed;
+          width: 100%;
+          text-align: center;
 }
