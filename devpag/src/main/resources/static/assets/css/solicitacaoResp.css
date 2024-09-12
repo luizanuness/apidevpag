@@ -1,0 +1,87 @@
+.navbar{
+    background-color: #146C94;
+}
+h5{
+    margin: 3rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.card-solic{
+    background-color: #146C94;
+    width: 300px;
+    height: 280px;
+    border-radius: 10%;
+    justify-items: center;
+    margin-left: 2rem;
+}
+.card-solic-2{
+    background-color: #146C94;
+    width: 300px;
+    height: 280px;
+    border-radius: 10%;
+    justify-items: center;
+    margin-left: 2rem;
+
+}
+.card-solic-3{
+    background-color: #146C94;
+    width: 300px;
+    height: 280px;
+    border-radius: 10%;
+    justify-items: center;
+    margin-left: 2rem;
+}
+.card-solic-4{
+    background-color: #146C94;
+    width: 300px;
+    height: 280px;
+    border-radius: 10%;
+    justify-items: center;
+    margin-left: 2rem;
+}
+.card-title{
+    color: #ffffff;
+    text-align: center
+}
+.card-text{
+    color: #ffffff;
+    text-align: center
+}
+.img-perfil{
+    width: 150px;
+}
+
+.formulario{
+    margin: 2rem;
+    width: 600px;
+    width: 600px;
+    border-radius: 20%;
+
+}
+.formulario-2{
+    margin: 2rem;
+    width: 600px;
+    width: 600px;
+    border-radius: 20%;
+}
+.form-group{
+    width: 70%;
+    height: 70%;
+    justify-content: center;
+    margin: 2rem;
+    box-shadow: #146C94;
+}
+.btn-lg{
+    width: 150px;
+    height: 40px;
+    margin: 1rem;
+    align-items: end;
+}
+footer{
+    background-color:  #146C94;
+    color:  #ffffff;;
+    padding: 1rem;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
