@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UsuarioController {
 
-    //direcionar para login/user.html
-    @GetMapping ("/perfil")
+    @GetMapping ("/login")
     public String perfil(){
-        return "user/user";
+        return "login/login";
     }
 
-    @GetMapping("/cadastro")
-    public String cadastro(){
+    @GetMapping("/cadAdm")
+    public String cadAdm(){
         return "cad/cadAdm";
     }
 }
