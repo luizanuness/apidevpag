@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+:root{
+    --cor-primaria:#014473;
+    --cor-secundaria:#1F9396;
+    --cor-terciaria: #848282;
+    --cor-quartenaria: #FFFFFF;
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.navbar{
+    background-color: var(--cor-primaria);
+}
+.navbar p{
+    color: var(--cor-quartenaria);
+}
+.titulo{
+    margin: 1rem;
+}
+.cartoes{
+    display: flex;
+}
+.cartao{
+    padding: 1rem;
+    background-color: #C70303;
+    margin-bottom: 5rem;
+    text-align: center;
+    width: 15rem;
+    margin: 2rem 1rem 5rem 1rem;
+    border-radius: 3rem;
+    color: var(--cor-quartenaria);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+}
+
+.botao{
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    border-radius: 25px;
+    font-size: large;
+    cursor: pointer;
+    border: none;
+    background-color: var(--cor-primaria);
+    color: var(--cor-quartenaria); 
+    margin-top: 10px;
+}
+.solicitacoes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 5rem;
+}
+.imagem{
+    height: 80%;
+    width: auto;
+}
+footer{
+    background-color: var(--cor-primaria);
+    color:  var(--cor-quartenaria);
+    padding: 1rem;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
