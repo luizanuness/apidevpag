@@ -21,6 +21,12 @@ import java.util.List;
 @RequestMapping("/responsavel")
 public class ResponsavelController {
 
+    //conectando paginas
+    @GetMapping("/resp")
+    public String responsavel(){
+        return "/responsavel/homeResp";
+    }
+
     @Autowired
     private ResponsavelRepository responsavelRepository;
 

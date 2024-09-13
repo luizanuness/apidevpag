@@ -38,11 +38,11 @@ public class LoginController {
             //redireciona de acordo com tipo de pessoa
             switch (role){
                 case "ROLE_ADMINISTRADOR":
-                    return "redirect:/home/adm";
+                    return "redirect:/adm/home";
                 case "ROLE_RESPONSAVEL":
-                    return "redirect:/home/resp";
+                    return "redirect:/resp/home";
                 case "ROLE_PORTARIA":
-                    return "redirect:/home/port";
+                    return "redirect:/port/home";
                 default:
                     return "redirect:/home/default";
             }
