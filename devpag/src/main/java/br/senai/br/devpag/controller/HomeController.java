@@ -11,7 +11,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String principal(){
-        return "index";
+        return "/inicio/index";
     }
 
 }
