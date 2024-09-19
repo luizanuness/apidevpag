@@ -1,6 +1,5 @@
-
 .navbar{
-   background-color: #014473;
+    background-color: #014473;
 }
 
 .container-form{
@@ -37,8 +36,8 @@
     border-radius: 0; /* Remove o border-radius da imagem interna */
 }
 footer{
-    background-color: var(--cor-primaria);
-    color:  var(--cor-quartenaria);
+    background-color:  #014473;
+    color:  #ffffff;;
     padding: 1rem;
     bottom: 0;
     position: fixed;
