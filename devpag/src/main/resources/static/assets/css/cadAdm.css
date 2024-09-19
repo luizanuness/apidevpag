@@ -1,12 +1,8 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .navbar{
     background-color: #014473;
-}
-.container-form{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px;
-    text-align: start;
 }
 .dropdown-toggle{
     width: 500px;
@@ -14,6 +10,14 @@
 }
 .dropdown-menu{
     width: 500px;
+}
+
+.container-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    text-align: start;
 }
 .card-aluno{
     width: 500px;
@@ -25,6 +29,7 @@
     align-items: center;
     overflow: hidden;
 }
+
 .img-container img {
     max-width: 90%;
     max-height: 90%;

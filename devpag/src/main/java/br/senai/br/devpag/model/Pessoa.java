@@ -33,7 +33,7 @@ public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
     //cpf
@@ -49,6 +49,7 @@ public class Pessoa {
     @NotEmpty(message = "E-mail deve ser informado")
     @Email(message = "E-mail inválido")
     private String email;
+
 
     //telefone
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa")
