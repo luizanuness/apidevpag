@@ -1,8 +1,10 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .navbar{
     background-color: #014473;
 }
-
-.container-form{
+.container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -19,15 +21,14 @@
     align-items: center;
     overflow: hidden;
 }
-
 .img-container img {
     max-width: 90%;
     max-height: 90%;
     border-radius: 0; /* Remove o border-radius da imagem interna */
 }
 footer{
-    background-color: #014473;
-    color: #ffffff;;
+    background-color:  #014473;
+    color:  #ffffff;;
     padding: 1rem;
     bottom: 0;
     position: fixed;
