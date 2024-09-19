@@ -11,7 +11,6 @@ body{
 .dropdown-menu{
     width: 500px;
 }
-
 .container-form{
     display: flex;
     flex-wrap: wrap;
@@ -29,7 +28,6 @@ body{
     align-items: center;
     overflow: hidden;
 }
-
 .img-container img {
     max-width: 90%;
     max-height: 90%;
