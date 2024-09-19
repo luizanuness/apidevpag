@@ -1,7 +1,6 @@
 .navbar{
     background-color: #014473;
 }
-
 .container-form{
     display: flex;
     flex-wrap: wrap;
@@ -16,9 +15,6 @@
 .dropdown-menu{
     width: 500px;
 }
-.btn{
-   align-items: end;
-}
 .card-aluno{
     width: 500px;
     height: 500px;
@@ -29,7 +25,6 @@
     align-items: center;
     overflow: hidden;
 }
-
 .img-container img {
     max-width: 90%;
     max-height: 90%;
