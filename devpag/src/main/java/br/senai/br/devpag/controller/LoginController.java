@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LoginController {
@@ -55,16 +56,4 @@ public class LoginController {
             }
         }
 
-
-    //cadastro
-
-    @GetMapping("/cad/administrador")
-    public String cadADM(){
-        return "/cad/cadAdm";
-    }
-
-    @GetMapping("/cad/responsavel")
-    public String cadRESP(){
-        return "/cad/cadResp";
-    }
 }
