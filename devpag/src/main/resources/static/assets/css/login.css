@@ -55,7 +55,7 @@ a{
 }
 footer{
     background-color: var(--cor-primaria);
-    color:  var(--cor-quartenaria);
+    color: var(--cor-quartenaria);
     padding: 1rem;
     bottom: 0;
     position: fixed;

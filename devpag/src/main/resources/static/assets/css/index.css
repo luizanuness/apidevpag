@@ -29,6 +29,7 @@ body{
   .dropdown {
     position: relative;
     display: inline-block;
+    margin-right: 45px;
   }
   
   /* Dropdown Content (Hidden by Default) */

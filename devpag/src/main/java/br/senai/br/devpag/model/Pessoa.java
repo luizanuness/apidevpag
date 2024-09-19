@@ -7,8 +7,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -29,7 +32,7 @@ import java.util.List;
 
 
 
-public class Pessoa {
+public class Pessoa implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,21 +58,44 @@ public class Pessoa {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa")
     private List<Telefone> telefones = new ArrayList<>();
 
-    //adiciona telefone
-    private void addTelefone(Telefone telefone)
-    {this.telefones.add(telefone);
-        telefone.setPessoa(this);
-    }
+        //adiciona telefone
+        private void addTelefone(Telefone telefone)
+        {this.telefones.add(telefone);
+            telefone.setPessoa(this);
+        }
 
-    //remove telefone
-    private void removeTelefone(Telefone telefone)
-    {this.telefones.remove(telefone);
-        telefone.setPessoa(null);
-    }
+        //remove telefone
+        private void removeTelefone(Telefone telefone)
+        {this.telefones.remove(telefone);
+            telefone.setPessoa(null);
+        }
 
 
     //senha
-    private String senha;
+    private String password;
+
+    //usuario
+    private String username;
+
+    @Override
+
+    public Collection<? extends GrantedAuthority> getAuthorities(){
+        return List.of(() -> "ROLE_" + getTipoPessoa());
+    }
+
+    public String getTipoPessoa(){
+        return "";
+    }
+
+    @Override
+    public String getPassword(){
+        return password;
+    }
+
+    @Override
+    public String getUsername(){
+        return username;
+    }
 
 }
 

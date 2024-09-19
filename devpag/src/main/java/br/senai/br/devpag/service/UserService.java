@@ -1,5 +1,6 @@
 package br.senai.br.devpag.service;
 
+import br.senai.br.devpag.model.Pessoa;
 import br.senai.br.devpag.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,7 +18,10 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username);
+        Pessoa pessoa = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + username));
+
+        return pessoa;
     }
 
 }
