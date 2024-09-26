@@ -1,7 +1,7 @@
 package br.senai.br.devpag.controller;
 
-import br.senai.br.devpag.model.User;
 import br.senai.br.devpag.repository.UserRepository;
+import br.senai.br.devpag.model.User;
 import br.senai.br.devpag.util.FileUploadUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import java.io.IOException;
 
@@ -30,6 +31,8 @@ public class UserController {
     public String listagem(Model model){
         model.addAttribute("users", userRepository.findAll());
         return "user/listagem";
+        //return "user/teste";
+
     }
 
     @GetMapping("/form-inserir")
@@ -38,7 +41,7 @@ public class UserController {
         return "user/form-inserir";
     }
 
-    @GetMapping("/form-alterar/{id}")
+    @GetMapping("/alterar/{id}")
     public String formAlterar(@PathVariable("id") Long id, Model model){
         model.addAttribute("user", userRepository.findById(id).get());
         return "user/form-alterar";
@@ -67,6 +70,8 @@ public class UserController {
 
         // fileName = user.getId() + "." + extensao;
         String fileName = user.getId() + "." + extensao;
+
+        user.setImage(fileName);
 
         userRepository.save(user);
 
