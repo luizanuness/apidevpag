@@ -14,11 +14,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
 @Data
 @Entity
-
-//id
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id"
@@ -29,74 +26,71 @@ import java.util.List;
         length = 1,
         discriminatorType = DiscriminatorType.STRING
 )
-
-
-
-public class Pessoa implements UserDetails{
+public class Pessoa implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    //cpf
+    // CPF
     @NotEmpty(message = "CPF deve ser informado")
     @CPF(message = "CPF inválido")
     private String cpf;
 
-    //nome
+    // Nome
     @NotEmpty(message = "Nome deve ser informado")
     private String nome;
 
-    //email
+    // Email
     @NotEmpty(message = "E-mail deve ser informado")
     @Email(message = "E-mail inválido")
     private String email;
 
-
-    //telefone
+    // Telefone
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa")
     private List<Telefone> telefones = new ArrayList<>();
 
-        //adiciona telefone
-        private void addTelefone(Telefone telefone)
-        {this.telefones.add(telefone);
-            telefone.setPessoa(this);
-        }
-
-        //remove telefone
-        private void removeTelefone(Telefone telefone)
-        {this.telefones.remove(telefone);
-            telefone.setPessoa(null);
-        }
-
-
-    //senha
+    // Senha
     private String password;
-
-    //usuario
     private String username;
+    private String foto;
 
     @Override
-
-    public Collection<? extends GrantedAuthority> getAuthorities(){
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(() -> "ROLE_" + getTipoPessoa());
     }
 
-    public String getTipoPessoa(){
-        return "";
+    public String getTipoPessoa() {
+        // Retorna o tipo baseado na discriminação
+        return this.getClass().getAnnotation(DiscriminatorValue.class).value();
     }
 
     @Override
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
     @Override
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    private void addTelefone(Telefone telefone) {
+        this.telefones.add(telefone);
+        telefone.setPessoa(this);
+    }
+
+    private void removeTelefone(Telefone telefone) {
+        this.telefones.remove(telefone);
+        telefone.setPessoa(null);
+    }
 }
-
-

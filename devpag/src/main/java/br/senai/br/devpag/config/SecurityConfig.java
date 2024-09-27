@@ -1,4 +1,3 @@
-
 package br.senai.br.devpag.config;
 
 import br.senai.br.devpag.service.UserService;
@@ -30,7 +29,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer(){
+    public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
 
                 .requestMatchers(new AntPathRequestMatcher("/**"))
@@ -50,7 +49,7 @@ public class SecurityConfig {
                 .userDetailsService(userService)
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home")
+                        .defaultSuccessUrl("/home", true)
                         .permitAll()
                 )
                 .logout((logout) -> logout
@@ -62,13 +61,11 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authManager (HttpSecurity httpSecurity) throws Exception{
+    public AuthenticationManager authManager(HttpSecurity httpSecurity) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 httpSecurity.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder());
         return authenticationManagerBuilder.build();
     }
-
-
-
 }
+
