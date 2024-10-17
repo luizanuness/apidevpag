@@ -2,9 +2,12 @@ package br.senai.br.devpag.controller;
 
 
 import br.senai.br.devpag.model.Administrador;
+import br.senai.br.devpag.model.Role;
 import br.senai.br.devpag.repository.AdministradorRepository;
+import br.senai.br.devpag.repository.RoleRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-
-@RequestMapping("/administrador")
+@Controller
+@RequestMapping("/cad")
 public class AdministradorController {
 
     @Autowired
     private AdministradorRepository administradorRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
 
     //lista de adms
@@ -76,6 +82,22 @@ public class AdministradorController {
         redirectAttributes.addFlashAttribute("mensagem", "Administrador excluído!");
 
         return "redirect:/administrador";
+    }
+
+    //cadastro
+
+    @GetMapping("/administrador")
+    public String cadADM(Model model){
+
+        model.addAttribute("administrador", new Administrador());
+        model.addAttribute("roles", roleRepository.findAll());
+
+        return "/cad/cadAdm";
+    }
+
+    @GetMapping("/responsavel")
+    public String cadRESP(){
+        return "/cad/cadResp";
     }
 
 }

@@ -19,8 +19,4 @@ public class Telefone {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
-
-    public void setPessoa(Pessoa pessoa){
-        this.pessoa = pessoa;
-    }
 }

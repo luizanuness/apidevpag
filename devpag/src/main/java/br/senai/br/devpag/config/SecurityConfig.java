@@ -1,6 +1,7 @@
 package br.senai.br.devpag.config;
 
 import br.senai.br.devpag.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,18 +25,17 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
-
                 .requestMatchers(new AntPathRequestMatcher("/**"))
-                .requestMatchers(new AntPathRequestMatcher("/assets/**"))
-                .requestMatchers(new AntPathRequestMatcher("/css/**"))
-                .requestMatchers(new AntPathRequestMatcher("/img/**"));
+                //.requestMatchers(new AntPathRequestMatcher("/usuario/**"))
+                .requestMatchers(new AntPathRequestMatcher("/assets/**"));
+
     }
 
     @Bean
@@ -43,13 +43,13 @@ public class SecurityConfig {
 
         httpSecurity
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/login","/login/**", "/inicio/index", "/cad/**", "/").permitAll() // Permitir acesso às páginas
+                        .requestMatchers(new AntPathRequestMatcher("/login/**")).permitAll()
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(userService)
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("/home")
                         .permitAll()
                 )
                 .logout((logout) -> logout
@@ -60,12 +60,7 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 
-    @Bean
-    public AuthenticationManager authManager(HttpSecurity httpSecurity) throws Exception {
-        AuthenticationManagerBuilder authenticationManagerBuilder =
-                httpSecurity.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder());
-        return authenticationManagerBuilder.build();
-    }
+
+
 }
 

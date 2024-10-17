@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 @Entity
 //determina que D = Direcao no tipo de pessoa
 @DiscriminatorValue(value = "D")
-
 public class Administrador extends Pessoa {
+
+    @OneToOne
+    private User user;
 }

@@ -1,10 +1,11 @@
 package br.senai.br.devpag.controller;
 
-import br.senai.br.devpag.model.User;
 import br.senai.br.devpag.repository.UserRepository;
+import br.senai.br.devpag.model.User;
 import br.senai.br.devpag.util.FileUploadUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import java.io.IOException;
 
@@ -27,13 +29,15 @@ public class UserController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping
-    public String listagem(Model model) {
+    public String listagem(Model model){
         model.addAttribute("users", userRepository.findAll());
         return "user/listagem";
+        //return "user/teste";
+
     }
 
     @GetMapping("/form-inserir")
-    public String formInserir(Model model) {
+    public String formInserir(Model model){
         model.addAttribute("user", new User());
         return "user/form-inserir";
     }
@@ -50,20 +54,22 @@ public class UserController {
             BindingResult result,
             RedirectAttributes attributes,
             @RequestParam("foto") MultipartFile multipartFile
-    ) throws IOException {
+    ) throws IOException
+    {
 
-        if (result.hasErrors()) {
+        if(result.hasErrors()){
             return "user/form-inserir";
         }
+
 
         String extensao = StringUtils.getFilenameExtension(multipartFile.getOriginalFilename());
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        // Salva o usuário no banco
         userRepository.save(user);
 
-        // Upload da foto
+
+        // fileName = user.getId() + "." + extensao;
         String fileName = user.getId() + "." + extensao;
 
         user.setImage(fileName);
@@ -82,7 +88,7 @@ public class UserController {
 
 
     @GetMapping("/excluir/{id}")
-    public String excluir(@PathVariable("id") Long id, RedirectAttributes attributes) {
+    public String excluir(@PathVariable("id") Long id, RedirectAttributes attributes){
         userRepository.deleteById(id);
         attributes.addFlashAttribute("mensagem", "Usuário excluído com sucesso!");
         return "redirect:/user";
