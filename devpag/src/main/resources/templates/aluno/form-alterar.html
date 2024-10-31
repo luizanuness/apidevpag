@@ -1,71 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <div th:replace="~{/fragments/heads.html :: heads}"></div>
-  <title>CADASTRO DE ALUNO</title>
+    <div th:replace="~{/fragments/heads.html :: heads}"></div>
+    <title>CADASTRO DE ALUNO</title>
 </head>
 <body>
 <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
 <br>
 <br>
 <div class="container container-form">
-  <div class="row">
     <!-- Formulário de Cadastro -->
-    <div class="col-md-6">
-      <h2>Cadastro de Aluno</h2>
-      <form th:action="@{/aluno/salvar}" th:object="${aluno}" method="post">
+    <form th:action="@{/aluno/salvar}" th:object="${aluno}" method="post">
         <input type="hidden" th:field="*{id}">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="nome">Nome</label>
-            <input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Digite seu nome">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="cpf">CPF</label>
-            <input type="text" th:field="*{cpf}" class="form-control" id="cpf" placeholder="Digite seu CPF">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Digite seu email">
-        </div>
-        <div class="form-group">
-          <label for="senha">Senha</label>
-          <input type="password" th:field="*{user.password}" class="form-control" id="senha" placeholder="Digite sua senha">
-        </div>
-        <div class="form-group">
-          <label for="telefone">Telefone</label>
-          <input type="text" th:field="*{telefone}"  class="form-control" id="telefone" placeholder="(00)00000-0000">
-        </div>
-        <div class="card">
-          <div class="card-header dynamic-update-rows">
-            <i class="fas fa-phone">Responsáveis</i>
-            <button type="button" name="addResponsavel" class="btn btn-sm btn-info" data-dynamic-update-rows-url="/aluno/addResponsavel">
-              <i class="fas fa-plus"></i>
-            </button>
-          </div>
-          <div class="card-body">
-            <table class="table dynamic-update-rows" style="width: 100%">
-              <tbody id="dynamicTableContents">
-              </tbody>
-            </table>
-          </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Cadastro de Aluno</h2>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nome">Nome</label>
+                        <input type="text" th:field="*{nome}" class="form-control" id="nome"
+                               placeholder="Digite seu nome">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cpf">CPF</label>
+                        <input type="text" th:field="*{cpf}" class="form-control" id="cpf" placeholder="Digite seu CPF">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" th:field="*{email}" class="form-control" id="email"
+                           placeholder="Digite seu email">
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" th:field="*{user.password}" class="form-control" id="senha"
+                           placeholder="Digite sua senha">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" th:field="*{telefone}" class="form-control" id="telefone"
+                           placeholder="(00)00000-0000">
+                </div>
+
+
+            </div>
+
+            <!-- Imagem com fundo redondo -->
+            <div class="col-md-6 img-container">
+                <div class="card-aluno">
+                    <img src="/assets/img/aluno.png" alt="Imagem de cadastro">
+                </div>
+            </div>
+            <div class="row" style="width: 100%; margin-top:20px;">
+                <div class="col-md-12">
+
+
+                    <div class="card">
+                        <div class="card-header dynamic-update-rows">
+                            <i class="fas fa-user"> Responsaveis</i>
+                            <button type="button" name="addResponsavel" class="btn btn-sm btn-info"
+                                    data-dynamic-update-rows-url="/aluno/addResponsavel">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table dynamic-update-rows" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>Email</th>
+                                        <th>Telefone</th>
+                                        <th>Senha</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                <tbody id="dynamicTableContents">
+                                    <tr th:fragment="responsaveis"
+                                        th:each="responsavel, rowStat : ${aluno.getResponsaveis()}">
+                                    >
+                                    <td>
+                                        <input type="text" th:field="*{aluno.responsaveis[__${rowStat.index}__].nome}"
+                                               class="form-control" placeholder="Digite o nome" />
+                                    </td>
+                                    <td>
+                                        <input type="text" th:field="*{aluno.responsaveis[__${rowStat.index}__].cpf}"
+                                               class="form-control" placeholder="Digite o CPF" />
+                                    </td>
+                                    <td>
+                                        <input type="email" th:field="*{aluno.responsaveis[__${rowStat.index}__].email}"
+                                               class="form-control" placeholder="Digite o email" />
+                                    </td>
+                                    <td>
+                                        <input type="text" th:field="*{aluno.responsaveis[__${rowStat.index}__].telefone}"
+                                               class="form-control" placeholder="(00)00000-0000" />
+                                    </td>
+                                    <td>
+                                        <input type="password"
+                                               th:field="*{aluno.responsaveis[__${rowStat.index}__].user.password}"
+                                               class="form-control" placeholder="Digite a senha" />
+                                    </td>
+                                    <td>
+                                        <button
+                                                type="button"
+                                                name="removeDynamicRow"
+                                                th:value="${rowStat.index}"
+                                                class="btn btn-sm btn-danger"
+                                                data-dynamic-update-rows-url="/aluno/removeResponsavel">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
         </div>
         <br>
         <button type="submit" class="btn btn-info">Cadastrar</button>
-      </form>
-      <br />
-      <br />
-      <a href="">Faça o login!</a>
-    </div>
 
-    <!-- Imagem com fundo redondo -->
-    <div class="col-md-6 img-container">
-      <div class="card-aluno">
-        <img src="/assets/img/aluno.png" alt="Imagem de cadastro">
-      </div>
-    </div>
-  </div>
+        <br/>
+        <br/>
+        <a href="">Faça o login!</a>
+    </form>
 </div>
 
 <br>
@@ -74,12 +134,32 @@
 
 <!--rodape-->
 <footer>
-  &copy; Todos os direitos reservados a empresa DevPag
+    &copy; Todos os direitos reservados a empresa DevPag
 </footer>
 
 <!-- Scripts do Bootstrap e jQuery (opcional para funcionalidades avançadas) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function () {
+        $('.dynamic-update-rows').on('click', 'button[data-dynamic-update-rows-url]', function () {
 
+            let url = $(this).attr('data-dynamic-update-rows-url');
+
+
+            let formData = $('form').serializeArray();
+            let param = {};
+            param["name"] = $(this).attr('name');
+            param["value"] = $(this).val();
+            formData.push(param);
+
+
+            // Atualiaza a seção dinâmica
+            $('#dynamicTableContents').load(url, formData);
+
+        });
+
+    })
+</script>
 </body>
 </html>

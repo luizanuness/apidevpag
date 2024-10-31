@@ -1,6 +1,7 @@
 package br.senai.br.devpag.controller;
 
 import br.senai.br.devpag.model.Aluno;
+import br.senai.br.devpag.model.Responsavel;
 import br.senai.br.devpag.repository.AlunoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -44,7 +42,7 @@ public class AlunoController {
             RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
-            return "aluno/listagem";
+            return "aluno/form-inserir";
         }
 
 
@@ -56,6 +54,17 @@ public class AlunoController {
 
         }
 
+        // Percorre os responsáveis do aluno e carrega o usuário do responsável
+        for (Responsavel responsavel : aluno.getResponsaveis()) {
+            if(!responsavel.getUser().getPassword().isEmpty()){
+                responsavel.getUser().setFirstName(responsavel.getNome());
+                responsavel.getUser().setEmail(responsavel.getEmail());
+                responsavel.getUser().setUsername(responsavel.getEmail());
+                responsavel.getUser().setPassword(bCryptPasswordEncoder.encode(responsavel.getUser().getPassword()));
+            }
+        }
+
+
 
         alunoRepository.save(aluno);
         redirectAttributes.addFlashAttribute("mensagem", "Aluno salvo com sucesso!");
@@ -64,17 +73,34 @@ public class AlunoController {
 
     @GetMapping("/form-alterar/{id}")
     public String formAlterar(@PathVariable Long id, Model model) {
-        model.addAttribute("aluno", alunoRepository.findById(id));
+
+        Aluno aluno = alunoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID inválido"));
+
+        model.addAttribute("aluno", aluno);
+
+
         return "aluno/form-alterar";
     }
 
     @GetMapping("/excluir/{id}")
-    public String exluir(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    public String excluir(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         alunoRepository.deleteById(id);
 
         redirectAttributes.addFlashAttribute("mensagem", "Aluno removido com sucesso!");
 
         return "redirect:/aluno";
+    }
+
+    @PostMapping("/addResponsavel")
+    public String addResponsavel(Aluno aluno, Model model){
+        aluno.addResponsavel(new Responsavel());
+        return "aluno/form-inserir :: responsaveis";
+    }
+
+    @PostMapping("/removeResponsavel")
+    public String removeResponsavel(Aluno aluno, Model model, @RequestParam("removeDynamicRow") Integer responsavelIndex){
+        aluno.getResponsaveis().remove(responsavelIndex.intValue());
+        return "aluno/form-inserir :: responsaveis";
     }
 
 }
