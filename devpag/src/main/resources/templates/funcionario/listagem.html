@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/heads.html :: heads}"></div>
+    <title>LISTAGEM DE FUNCIONÁRIOS</title>
+</head>
+<body>
+<div th:replace="~{/fragments/navbar.html :: navbar}"></div>
+<br>
+<br>
+
+
+<div class="container">
+    <div class="page-inner">
+        <div class="page-header">
+            <h3 class="fw-bold mb-3">LISTAGEM DE FUNCIONÁRIOS</h3>
+        </div>
+        <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <span th:text="${mensagem}"></span>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Listagem de Alunos</span>
+                        <a
+                                th:href="@{/funcionario/form-inserir}"
+                                class="btn btn-primary"
+                                style="float: right"
+                        > Cadastrar Usuário
+                        </a>
+                    </div>
+
+
+                    <div class="row">
+
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table
+                                        id="basic-datatables"
+                                        class="display table table-striped table-hover"
+                                >
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Email</th>
+                                        <th>CPF</th>
+                                        <th>Ações</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:if="${funcionarios.empty}">
+                                        <td colspan="7">Nenhum registro encontrado</td>
+                                    </tr>
+
+                                    <!-- Recurso do Themyleaf. Percorre a lista de usuarios e preenche a tabela -->
+                                    <tr th:each="funcionario : ${funcionarios}">
+                                        <td><span th:text="${funcionario.id}"> ID </span></td>
+                                        <td><span th:text="${funcionario.nome}"> Nome </span></td>
+                                        <td><span th:text="${funcionario.email}"> Email </span></td>
+                                        <td><span th:text="${funcionario.cpf}"> cpf </span></td>
+                                        <td>
+
+                                            <a th:href="@{/funcionario/form-alterar/{id}(id=${funcionario.id})}" class="edit" data-toggle="modal">
+                                                <i class="fa fa-edit" data-toggle="tooltip" title="Alterar"></i>
+                                                Alterar
+                                            </a>
+
+                                            <a th:href="@{/funcionario/excluir/{id}(id=${funcionario.id})}"
+                                               th:data-confirm-delete="|Você gostaria de apagar ${funcionario.nome}?|"
+                                               onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+
+                                               id="alertDelete"
+                                               class="delete">
+                                                <i class="fa fa-times" style="color: red; margin-left: 10px;" data-toggle="tooltip" title="Excluir"></i>
+                                                Excluir
+                                            </a>
+
+
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+<!--rodape-->
+<footer>
+    &copy; Todos os direitos reservados a empresa DevPag
+</footer>
+
+<!-- Scripts do Bootstrap e jQuery (opcional para funcionalidades avançadas) -->
+<!--   Core JS Files   -->
+<script src="/assets/js/core/jquery-3.7.1.min.js"></script>
+<script src="/assets/js/core/popper.min.js"></script>
+<script src="/assets/js/core/bootstrap.min.js"></script>
+
+<!-- jQuery Scrollbar -->
+<script src="/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<!-- Datatables -->
+<script src="/assets/js/plugin/datatables/datatables.min.js"></script>
+<!-- Kaiadmin JS -->
+<script src="/assets/js/kaiadmin.min.js"></script>
+<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+<script src="/assets/js/setting-demo2.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/scripts.js"></script>
+<script src="/assets/js/datatables-simple-demo.js"></script>
+</body>
+</html>
